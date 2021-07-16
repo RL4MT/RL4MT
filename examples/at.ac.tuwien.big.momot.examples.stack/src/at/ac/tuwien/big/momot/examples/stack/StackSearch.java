@@ -13,6 +13,7 @@ import at.ac.tuwien.big.moea.search.algorithm.provider.IRegisteredAlgorithm;
 import at.ac.tuwien.big.moea.search.algorithm.reinforcement.environment.IEnvironment;
 import at.ac.tuwien.big.moea.search.fitness.comparator.ObjectiveFitnessComparator;
 import at.ac.tuwien.big.momot.TransformationResultManager;
+import at.ac.tuwien.big.momot.TransformationSearchOrchestration;
 import at.ac.tuwien.big.momot.examples.stack.stack.StackPackage;
 import at.ac.tuwien.big.momot.problem.solution.TransformationSolution;
 import at.ac.tuwien.big.momot.search.algorithm.operator.mutation.TransformationParameterMutation;
@@ -137,6 +138,8 @@ public class StackSearch {
                new CurrentNondominatedPopulationPrintListener(PRINT_DIRECTORY, algoNames, NR_RUNS, printInterval));
       }
 
+      printSearchInfo(search);
+
       experiment.run();
 
       System.out.println("-------------------------------------------------------");
@@ -171,6 +174,30 @@ public class StackSearch {
       System.out.println("- Save Indicator BoxPlots to 'output/analysis/'");
       searchAnalyzer.saveIndicatorBoxPlots("output/analysis/", baseName);
       return searchAnalyzer;
+   }
+
+   public static void printSearchInfo(final TransformationSearchOrchestration orchestration) {
+      final List<String> moduleNames = new ArrayList<>();
+      for(final org.eclipse.emf.henshin.model.Module m : orchestration.getModuleManager().getModules()) {
+         moduleNames.add(m.getName());
+      }
+      ;
+      System.out.println("-------------------------------------------------------");
+      System.out.println("Search");
+      System.out.println("-------------------------------------------------------");
+      // System.out.println("InputModel: " + INITIAL_MODEL);
+      System.out.println("Objectives:      " + orchestration.getFitnessFunction().getObjectiveNames());
+      System.out.println("NrObjectives:    " + orchestration.getNumberOfObjectives());
+      System.out.println("Constraints:     " + orchestration.getFitnessFunction().getConstraintNames());
+      System.out.println("NrConstraints:   " + orchestration.getNumberOfConstraints());
+      System.out.println("Transformations: " + moduleNames.toString());
+      System.out.println("Units:           " + orchestration.getModuleManager().getUnits());
+      System.out.println("SolutionLength:  " + orchestration.getSolutionLength());
+      System.out.println("PopulationSize:  " + POPULATION_SIZE);
+      System.out.println("Iterations:      " + MAX_EVALUATIONS / POPULATION_SIZE);
+      System.out.println("MaxEvaluations:  " + MAX_EVALUATIONS);
+      System.out.println("AlgorithmRuns:   " + NR_RUNS);
+      System.out.println("---------------------------");
    }
 
    public static void saveModels(final List<File> modelFiles) {

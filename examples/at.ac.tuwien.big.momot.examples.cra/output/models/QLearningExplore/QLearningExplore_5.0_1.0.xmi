@@ -6,7 +6,7 @@
   <classes name="Class_3" encapsulates="//@features.3"/>
   <classes name="Class_4" encapsulates="//@features.4"/>
   <classes name="Class_5" encapsulates="//@features.5"/>
-  <classes name="Class_6" encapsulates="//@features.6 //@features.7"/>
+  <classes name="Class_7" encapsulates="//@features.7 //@features.6"/>
   <classes name="Class_8" encapsulates="//@features.8"/>
   <features xsi:type="architecture:Method" name="M4" isEncapsulatedBy="//@classes.0" dataDependency="//@features.7 //@features.8" functionalDependency="//@features.2"/>
   <features xsi:type="architecture:Method" name="M3" isEncapsulatedBy="//@classes.1" dataDependency="//@features.6 //@features.7" functionalDependency="//@features.0 //@features.3"/>

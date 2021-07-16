@@ -1,60 +1,60 @@
 NSGAII:
     Hypervolume: 
-        Aggregate: 0.31405079509119865
-        Min: 0.2703888519301586
-        Median: 0.31405079509119865
-        Max: 0.31405079509119865
-        Mean: 0.29949681403751865
-        StandardDeviation: 0.025208234637368612
-        Variance: 6.354550935326307E-4
+        Aggregate: 0.4989877579547276
+        Min: 0.4804635643013558
+        Median: 0.4989877579547276
+        Max: 0.4989877579547276
+        Mean: 0.492813026736937
+        StandardDeviation: 0.01069494819229498
+        Variance: 1.1438191683587365E-4
         Count: 3
         Indifferent: [QLearningExplore, QLearning]
         EffectSize: [
-            - { measure: CohensD, algorithm: QLearningExplore, effectSize: 0.8164965809277249, magnitude: large }
+            - { measure: CohensD, algorithm: QLearningExplore, effectSize: 0.816496580927726, magnitude: large }
             - { measure: CliffsDelta, algorithm: QLearningExplore, effectSize: 0.3333333333333333, magnitude: medium }
             - { measure: VarghaDelaneyA, algorithm: QLearningExplore, effectSize: 0.3333333333333333 }
-            - { measure: CohensD, algorithm: QLearning, effectSize: 0.328272148710017, magnitude: small }
-            - { measure: CliffsDelta, algorithm: QLearning, effectSize: 0.1111111111111111, magnitude: negligible }
-            - { measure: VarghaDelaneyA, algorithm: QLearning, effectSize: 0.4444444444444444 }
+            - { measure: CohensD, algorithm: QLearning, effectSize: 1.779545233537748, magnitude: large }
+            - { measure: CliffsDelta, algorithm: QLearning, effectSize: 0.7777777777777778, magnitude: large }
+            - { measure: VarghaDelaneyA, algorithm: QLearning, effectSize: 0.8888888888888888 }
         ]
-        Values: [0.31405079509119865, 0.2703888519301586, 0.31405079509119865]
+        Values: [0.4989877579547276, 0.4989877579547276, 0.4804635643013558]
 QLearningExplore:
     Hypervolume: 
-        Aggregate: 0.31405079509119865
-        Min: 0.31405079509119865
-        Median: 0.31405079509119865
-        Max: 0.31405079509119865
-        Mean: 0.31405079509119865
+        Aggregate: 0.4989877579547276
+        Min: 0.4989877579547276
+        Median: 0.4989877579547276
+        Max: 0.4989877579547276
+        Mean: 0.4989877579547276
         StandardDeviation: 0.0
         Variance: 0.0
         Count: 3
         Indifferent: [NSGAII, QLearning]
         EffectSize: [
-            - { measure: CohensD, algorithm: NSGAII, effectSize: 0.8164965809277249, magnitude: large }
+            - { measure: CohensD, algorithm: NSGAII, effectSize: 0.816496580927726, magnitude: large }
             - { measure: CliffsDelta, algorithm: NSGAII, effectSize: 0.3333333333333333, magnitude: medium }
             - { measure: VarghaDelaneyA, algorithm: NSGAII, effectSize: 0.6666666666666666 }
-            - { measure: CohensD, algorithm: QLearning, effectSize: 0.8164965809277259, magnitude: large }
-            - { measure: CliffsDelta, algorithm: QLearning, effectSize: 0.3333333333333333, magnitude: medium }
-            - { measure: VarghaDelaneyA, algorithm: QLearning, effectSize: 0.6666666666666666 }
+            - { measure: CohensD, algorithm: QLearning, effectSize: 4.538540534168039, magnitude: large }
+            - { measure: CliffsDelta, algorithm: QLearning, effectSize: 1.0, magnitude: large }
+            - { measure: VarghaDelaneyA, algorithm: QLearning, effectSize: 1.0 }
         ]
-        Values: [0.31405079509119865, 0.31405079509119865, 0.31405079509119865]
+        Values: [0.4989877579547276, 0.4989877579547276, 0.4989877579547276]
 QLearning:
     Hypervolume: 
-        Aggregate: 0.31405079509119865
-        Min: 0.290360605556564
-        Median: 0.31405079509119865
-        Max: 0.31405079509119865
-        Mean: 0.30615406524632044
-        StandardDeviation: 0.013677537304974568
-        Variance: 1.8707502672897096E-4
+        Aggregate: 0.48477364423394687
+        Min: 0.4727905920581036
+        Median: 0.4727905920581036
+        Max: 0.48477364423394687
+        Mean: 0.4767849427833847
+        StandardDeviation: 0.006918418399436447
+        Variance: 4.786451314966077E-5
         Count: 3
         Indifferent: [NSGAII, QLearningExplore]
         EffectSize: [
-            - { measure: CohensD, algorithm: NSGAII, effectSize: 0.328272148710017, magnitude: small }
-            - { measure: CliffsDelta, algorithm: NSGAII, effectSize: 0.1111111111111111, magnitude: negligible }
-            - { measure: VarghaDelaneyA, algorithm: NSGAII, effectSize: 0.5555555555555556 }
-            - { measure: CohensD, algorithm: QLearningExplore, effectSize: 0.8164965809277259, magnitude: large }
-            - { measure: CliffsDelta, algorithm: QLearningExplore, effectSize: 0.3333333333333333, magnitude: medium }
-            - { measure: VarghaDelaneyA, algorithm: QLearningExplore, effectSize: 0.3333333333333333 }
+            - { measure: CohensD, algorithm: NSGAII, effectSize: 1.779545233537748, magnitude: large }
+            - { measure: CliffsDelta, algorithm: NSGAII, effectSize: 0.7777777777777778, magnitude: large }
+            - { measure: VarghaDelaneyA, algorithm: NSGAII, effectSize: 0.1111111111111111 }
+            - { measure: CohensD, algorithm: QLearningExplore, effectSize: 4.538540534168039, magnitude: large }
+            - { measure: CliffsDelta, algorithm: QLearningExplore, effectSize: 1.0, magnitude: large }
+            - { measure: VarghaDelaneyA, algorithm: QLearningExplore, effectSize: 0.0 }
         ]
-        Values: [0.290360605556564, 0.31405079509119865, 0.31405079509119865]
+        Values: [0.48477364423394687, 0.4727905920581036, 0.4727905920581036]
