@@ -1,5 +1,5 @@
 /bin/
-/output/
-/model/output/solutions/
+#/output/
+#/model/output/solutions/
 /xtend-gen/
 /src-gen/
