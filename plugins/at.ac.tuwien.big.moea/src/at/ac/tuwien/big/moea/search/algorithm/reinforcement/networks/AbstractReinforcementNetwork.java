@@ -94,7 +94,6 @@ public abstract class AbstractReinforcementNetwork<S extends Solution> {
       lll.add((ArrayList<Double>) meanRewardList);
       lll.add((ArrayList<Double>) timePassedList);
 
-      FileManager.saveBenchMark("evaluations;reward;averageReward;runtime in ms;", lll,
-            scoreSavePath + "_" + ts + ".csv");
+      FileManager.saveBenchMark("evaluations;reward;averageReward;runtime in ms;", lll, scoreSavePath + ".csv");
    }
 }

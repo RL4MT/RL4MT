@@ -147,7 +147,8 @@ public class PolicyGradientNetwork<S extends Solution> extends AbstractReinforce
       final ArrayList<Integer> actionLs = new ArrayList<>();
       final ArrayList<INDArray> rewardLs = new ArrayList<>();
 
-      System.out.println("Training epoch " + nrOfEpochs++ + "..");
+      System.out.println("Training epoch " + ++nrOfEpochs + "..");
+
       while(!done) {
          dist = nn.outputSingle(oldObs);
 
@@ -189,9 +190,9 @@ public class PolicyGradientNetwork<S extends Solution> extends AbstractReinforce
       timePassedList.add((double) (System.currentTimeMillis() - startTime));
       meanRewardEarned.add((double) (cumReward / epochSteps));
 
-      if(this.modelSavePath != null && epochsPerSave > 0 && nrOfEpochs % epochsPerSave == 0) {
-         saveModel(nn, nrOfEpochs, modelSavePath);
-      }
+      // if(this.modelSavePath != null && epochsPerSave > 0 && nrOfEpochs % epochsPerSave == 0) {
+      // saveModel(nn, nrOfEpochs, modelSavePath);
+      // }
 
       if(this.scoreSavePath != null && epochsPerSave > 0 && nrOfEpochs % epochsPerSave == 0) {
          System.out.println("Saving rewards at epoch " + nrOfEpochs + " after "

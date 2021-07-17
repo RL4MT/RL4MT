@@ -101,7 +101,8 @@ public class PacmanSearch {
 
    protected SearchExperiment<TransformationSolution> createExperiment(
          final TransformationSearchOrchestration orchestration) {
-      final SearchExperiment<TransformationSolution> experiment = new SearchExperiment<>(orchestration, MAX_EVALUATIONS);
+      final SearchExperiment<TransformationSolution> experiment = new SearchExperiment<>(orchestration,
+            MAX_EVALUATIONS);
       experiment.setNumberOfRuns(NR_RUNS);
       experiment.addProgressListener(_createListener_0());
       return experiment;
@@ -160,11 +161,10 @@ public class PacmanSearch {
 
       // algorithm settings
 
-      orchestration.addAlgorithm("Q-learning",
-            rl.createSingleObjectiveQLearner(0.9, 0.9, true, 1e-3, 0.1, "output/qlearn", 400));
+      // orchestration.addAlgorithm("Q-learning",
+      // rl.createSingleObjectiveQLearner(0.9, 0.9, true, 1e-3, 0.1, "output/qlearn", 200));
 
-      // orchestration.addAlgorithm("PG", rl.createPolicyGradient(0.95, 1e-4, null,
-      // "output/nn", "output/pg", 200, false));
+      orchestration.addAlgorithm("PG", rl.createPolicyGradient(0.95, 1e-4, null, "output/nn", "output/pg", 200, false));
 
       return orchestration;
    }

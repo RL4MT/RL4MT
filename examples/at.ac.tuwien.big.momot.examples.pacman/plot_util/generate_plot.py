@@ -33,6 +33,8 @@ if x_axis_seconds == 0:
 else:
     max_time_x = x_axis_seconds
 
+print("-> Creating plot...")
+
 col = sns.color_palette("Set2")
 sns.set_style("darkgrid", {"axes.facecolor": ".9"})
 
@@ -52,3 +54,4 @@ plt.legend()
 plt.legend(loc="best", fontsize="large")
 
 plt.savefig("average_reward.png", bbox_inches='tight')
+print("-> Plot saved to './average_reward.png'")

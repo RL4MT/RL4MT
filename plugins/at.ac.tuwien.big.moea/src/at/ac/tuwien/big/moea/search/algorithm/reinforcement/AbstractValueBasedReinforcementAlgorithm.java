@@ -186,8 +186,7 @@ public abstract class AbstractValueBasedReinforcementAlgorithm<S extends Solutio
       lll.add((ArrayList<Double>) rewardList);
       lll.add((ArrayList<Double>) meanReward);
       lll.add((ArrayList<Double>) secondsPassed);
-      FileManager.saveBenchMark("evaluations;reward;averageReward;runtime in ms;", lll,
-            scoreSavePath + "_" + ts + ".csv");
+      FileManager.saveBenchMark("evaluations;reward;averageReward;runtime in ms;", lll, scoreSavePath + ".csv");
    }
 
 }
