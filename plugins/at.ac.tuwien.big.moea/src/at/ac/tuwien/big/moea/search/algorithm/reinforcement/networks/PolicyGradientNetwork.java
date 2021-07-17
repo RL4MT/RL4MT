@@ -6,7 +6,6 @@ import at.ac.tuwien.big.moea.search.algorithm.reinforcement.utils.EnvResponse;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import org.deeplearning4j.nn.conf.ComputationGraphConfiguration;
 import org.deeplearning4j.nn.conf.NeuralNetConfiguration;
@@ -32,8 +31,9 @@ public class PolicyGradientNetwork<S extends Solution> extends AbstractReinforce
 
    public PolicyGradientNetwork(final double gamma, final double lr, final Problem problem,
          final IEnvironment<S> environment, final File network, final String modelSavePath, final String scoreSavePath,
-         final int epochsPerModelSave, final boolean enableProgressServer) throws IOException {
-      super(gamma, lr, problem, environment, scoreSavePath, enableProgressServer);
+         final int epochsPerModelSave, final boolean enableProgressServer, final int terminateAfterSeconds)
+         throws IOException {
+      super(gamma, lr, problem, environment, scoreSavePath, enableProgressServer, terminateAfterSeconds);
 
       this.modelSavePath = modelSavePath;
       this.epochsPerSave = epochsPerModelSave;
@@ -132,12 +132,13 @@ public class PolicyGradientNetwork<S extends Solution> extends AbstractReinforce
 
    }
 
-   public List<S> trainEpoch() {
+   public boolean trainEpoch() {
 
       int cumReward = 0;
       int epochSteps = 1;
       final boolean done = false;
-      final List<S> returnSolutions = new ArrayList<>();
+      // final List<S> returnSolutions = new ArrayList<>();
+      boolean terminateRun = false;
 
       INDArray dist;
       INDArray oldObs = this.encoder.encodeSolution(environment.reset());
@@ -157,7 +158,7 @@ public class PolicyGradientNetwork<S extends Solution> extends AbstractReinforce
          final int action = response.getAppliedActionId();
          final S newSolution = response.getState();
 
-         returnSolutions.add(newSolution);
+         // returnSolutions.add(newSolution);
 
          stateLs.add(oldObs);
          actionLs.add(action);
@@ -194,13 +195,18 @@ public class PolicyGradientNetwork<S extends Solution> extends AbstractReinforce
       // saveModel(nn, nrOfEpochs, modelSavePath);
       // }
 
+      if(terminateAfterSeconds > 0 && terminateAfterSeconds < (System.currentTimeMillis() - startTime) / 1000.0) {
+         System.out.println("Terminated after " + terminateAfterSeconds + " seconds");
+         terminateRun = true;
+      }
+
       if(this.scoreSavePath != null && epochsPerSave > 0 && nrOfEpochs % epochsPerSave == 0) {
          System.out.println("Saving rewards at epoch " + nrOfEpochs + " after "
                + (System.currentTimeMillis() - startTime) / 1000.0 + " seconds");
          saveRewards(framesList, rewardEarned, meanRewardEarned, timePassedList, nrOfEpochs);
       }
 
-      return returnSolutions;
+      return terminateRun;
    }
 
 }

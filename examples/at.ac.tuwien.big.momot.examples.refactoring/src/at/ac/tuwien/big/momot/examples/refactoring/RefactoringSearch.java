@@ -211,9 +211,9 @@ public class RefactoringSearch {
                   new TransformationPlaceholderMutation(0.2)));
 
       orchestration.addAlgorithm("QLearningExplore",
-            rl.createSingleObjectiveExploreQLearner(10, 0.9, 0.9, true, 0.1, 0.1, null, 0));
+            rl.createSingleObjectiveExploreQLearner(10, 0.9, 0.9, true, 0.1, 0.1, null, 0, 0));
 
-      orchestration.addAlgorithm("QLearning", rl.createSingleObjectiveQLearner(0.9, 0.9, true, 0.1, 0.1, null, 0));
+      orchestration.addAlgorithm("QLearning", rl.createSingleObjectiveQLearner(0.9, 0.9, true, 0.1, 0.1, null, 0, 0));
 
       return orchestration;
    }

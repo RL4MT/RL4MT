@@ -255,9 +255,9 @@ public class ArchitectureSearch {
       // algorithm settings
 
       orchestration.addAlgorithm("QLearningExplore",
-            rl.createSingleObjectiveExploreQLearner(10, 0.9, 0.9, true, 1e-3, 0.1, null, 0));
+            rl.createSingleObjectiveExploreQLearner(10, 0.9, 0.9, true, 1e-3, 0.1, null, 0, 0));
 
-      orchestration.addAlgorithm("QLearning", rl.createSingleObjectiveQLearner(0.9, 0.9, true, 1e-3, 0.1, null, 0));
+      orchestration.addAlgorithm("QLearning", rl.createSingleObjectiveQLearner(0.9, 0.9, true, 1e-3, 0.1, null, 0, 0));
 
       orchestration.addAlgorithm("NSGAII",
             moea.createNSGAII(new TournamentSelection(2), new OnePointCrossover(1.0),

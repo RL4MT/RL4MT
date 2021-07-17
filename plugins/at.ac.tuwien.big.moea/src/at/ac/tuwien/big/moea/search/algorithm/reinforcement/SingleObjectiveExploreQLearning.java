@@ -22,8 +22,9 @@ public class SingleObjectiveExploreQLearning<S extends Solution> extends Abstrac
 
    public SingleObjectiveExploreQLearning(final int explorationSteps, final double gamma, final double eps,
          final boolean withEpsDecay, final double epsDecay, final double epsMinimum, final Problem problem,
-         final IEnvironment<S> environment, final String savePath, final int recordInterval) {
-      super(problem, environment, savePath, recordInterval);
+         final IEnvironment<S> environment, final String savePath, final int recordInterval,
+         final int terminateAfterSeconds) {
+      super(problem, environment, savePath, recordInterval, terminateAfterSeconds);
 
       this.gamma = gamma;
       this.eps = eps;
@@ -83,6 +84,11 @@ public class SingleObjectiveExploreQLearning<S extends Solution> extends Abstrac
             framesList.add((double) iterations);
             timePassedList.add((double) (System.currentTimeMillis() - startTime));
             meanRewardEarned.add(cumReward / epochSteps);
+
+            if(terminateAfterSeconds > 0 && terminateAfterSeconds < (System.currentTimeMillis() - startTime) / 1000.0) {
+               System.out.println("Terminated after " + terminateAfterSeconds + " seconds");
+               this.terminate();
+            }
 
             if(epochCount % this.recordInterval == 0) {
                saveRewards(savePath, framesList, rewardEarned, timePassedList, meanRewardEarned, epochCount);

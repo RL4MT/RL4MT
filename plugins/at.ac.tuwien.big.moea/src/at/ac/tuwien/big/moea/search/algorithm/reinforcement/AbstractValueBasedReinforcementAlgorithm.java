@@ -44,6 +44,7 @@ public abstract class AbstractValueBasedReinforcementAlgorithm<S extends Solutio
    protected final IRLUtils<S> utils;
    protected int recordInterval;
    protected int epochSteps;
+   protected int terminateAfterSeconds = 0;
 
    FileOutputStream fOut;
    ObjectOutputStream oos;
@@ -58,7 +59,7 @@ public abstract class AbstractValueBasedReinforcementAlgorithm<S extends Solutio
    protected NondominatedPopulation population;
 
    public AbstractValueBasedReinforcementAlgorithm(final Problem problem, final IEnvironment<S> environment,
-         final String savePath, final int recordInterval) {
+         final String savePath, final int recordInterval, final int terminateAfterSeconds) {
       super(problem);
 
       this.rng = new Random();
@@ -71,6 +72,7 @@ public abstract class AbstractValueBasedReinforcementAlgorithm<S extends Solutio
       this.currentSolution = environment.reset();
       this.utils = environment.getRLUtils();
       this.epochSteps = 0;
+      this.terminateAfterSeconds = terminateAfterSeconds;
 
       evaluate(this.currentSolution);
 

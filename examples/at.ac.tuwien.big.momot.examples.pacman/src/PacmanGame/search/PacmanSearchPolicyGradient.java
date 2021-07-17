@@ -1,7 +1,6 @@
 package PacmanGame.search;
 
 import at.ac.tuwien.big.moea.SearchExperiment;
-import at.ac.tuwien.big.moea.SearchResultManager;
 import at.ac.tuwien.big.moea.experiment.executor.listener.SeedRuntimePrintListener;
 import at.ac.tuwien.big.moea.search.algorithm.LocalSearchAlgorithmFactory;
 import at.ac.tuwien.big.moea.search.algorithm.RLAlgorithmFactory;
@@ -29,14 +28,13 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.henshin.interpreter.EGraph;
 import org.eclipse.emf.henshin.model.resource.HenshinResourceSet;
-import org.moeaframework.core.Population;
 import org.moeaframework.util.progress.ProgressListener;
 
 import PacmanGame.PacmanGamePackage;
 import PacmanGame.impl.GameImpl;
 
 @SuppressWarnings("all")
-public class PacmanSearch {
+public class PacmanSearchPolicyGradient {
    protected static final String INITIAL_MODEL = "models/input_8x8.xmi";
 
    protected static final int SOLUTION_LENGTH = 50;
@@ -53,7 +51,7 @@ public class PacmanSearch {
 
    public static void main(final String... args) {
       initialization();
-      final PacmanSearch search = new PacmanSearch();
+      final PacmanSearchPolicyGradient search = new PacmanSearchPolicyGradient();
       search.performSearch(INITIAL_MODEL, SOLUTION_LENGTH);
       finalization();
    }
@@ -63,6 +61,8 @@ public class PacmanSearch {
          "transformation/move_right.henshin" };
 
    protected final int MAX_EVALUATIONS = 3000000;
+
+   protected final int TRAINING_TIME = 600;
 
    protected final int NR_RUNS = 1;
 
@@ -159,12 +159,8 @@ public class PacmanSearch {
 
       final RLAlgorithmFactory<TransformationSolution> rl = orchestration.createRLAlgorithmFactory(env);
 
-      // algorithm settings
-
-      // orchestration.addAlgorithm("Q-learning",
-      // rl.createSingleObjectiveQLearner(0.9, 0.9, true, 1e-3, 0.1, "output/qlearn", 200));
-
-      orchestration.addAlgorithm("PG", rl.createPolicyGradient(0.95, 1e-4, null, "output/nn", "output/pg", 200, false));
+      orchestration.addAlgorithm("PG",
+            rl.createPolicyGradient(0.95, 1e-4, null, "output/nn", "output/pg", 200, false, TRAINING_TIME));
 
       return orchestration;
    }
@@ -184,18 +180,6 @@ public class PacmanSearch {
       printSearchInfo(orchestration);
       final SearchExperiment<TransformationSolution> experiment = createExperiment(orchestration);
       experiment.run();
-
-      System.out.println("-------------------------------------------------------");
-      System.out.println("Results");
-      System.out.println("-------------------------------------------------------");
-
-      System.out.println("PG:");
-      Population population = SearchResultManager.createApproximationSet(experiment, "PG");
-      System.out.println(SearchResultManager.printObjectives(population));
-
-      System.out.println("Q-learning:");
-      population = SearchResultManager.createApproximationSet(experiment, "Q-learning");
-      System.out.println(SearchResultManager.printObjectives(population));
    }
 
    public void printSearchInfo(final TransformationSearchOrchestration orchestration) {

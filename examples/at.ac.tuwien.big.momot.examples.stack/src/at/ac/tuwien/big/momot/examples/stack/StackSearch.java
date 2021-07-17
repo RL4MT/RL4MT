@@ -112,9 +112,9 @@ public class StackSearch {
                   new TransformationPlaceholderMutation(0.2)));
 
       search.addAlgorithm("QLearningExplore",
-            rl.createSingleObjectiveExploreQLearner(10, 0.9, 0.9, true, 1e-3, 0.1, null, 0));
+            rl.createSingleObjectiveExploreQLearner(10, 0.9, 0.9, true, 1e-3, 0.1, null, 0, 0));
 
-      search.addAlgorithm("QLearning", rl.createSingleObjectiveQLearner(0.9, 0.9, true, 1e-3, 0.1, null, 0));
+      search.addAlgorithm("QLearning", rl.createSingleObjectiveQLearner(0.9, 0.9, true, 1e-3, 0.1, null, 0, 0));
 
       // experiment
       final SearchExperiment<TransformationSolution> experiment = new SearchExperiment<>(search, MAX_EVALUATIONS);

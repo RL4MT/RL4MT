@@ -54,16 +54,19 @@ public class RLAlgorithmFactory<S extends Solution> extends AbstractAlgorithmFac
     *           .. n (number of epochs to save a model and score stats)
     * @param enableProgressServer
     *           .. should the server be enabled for training stats, i.e., gradient updates, loss, ..
+    *
+    * @param terminateAfterSeconds
+    *           .. If > 0, the training run will terminate after the given amount of time
     * @return
     */
    public AbstractRegisteredAlgorithm<PolicyGradient<S>> createPolicyGradient(final double gamma,
          final double learningRate, final File network, final String modelSavePath, final String scoreSavePath,
-         final int epochsPerModelSave, final boolean enableProgressServer) {
+         final int epochsPerModelSave, final boolean enableProgressServer, final int terminateAfterSeconds) {
       return new AbstractRegisteredAlgorithm<PolicyGradient<S>>() {
          @Override
          public PolicyGradient<S> createAlgorithm() {
             return new PolicyGradient<>(gamma, learningRate, createProblem(), getEnvironment(), network, modelSavePath,
-                  scoreSavePath, epochsPerModelSave, enableProgressServer);
+                  scoreSavePath, epochsPerModelSave, enableProgressServer, terminateAfterSeconds);
          }
       };
    }
@@ -87,17 +90,20 @@ public class RLAlgorithmFactory<S extends Solution> extends AbstractAlgorithmFac
     *           .. storage path
     * @param recordInterval
     *           .. Recording interval / number of epochs
+    * @param terminateAfterSeconds
+    *           .. If > 0, the training run will terminate after the given amount of time
     * @return
     */
    public AbstractRegisteredAlgorithm<SingleObjectiveExploreQLearning<S>> createSingleObjectiveExploreQLearner(
          final int explorationSteps, final double gamma, final double eps, final boolean withEpsDecay,
-         final double epsDecay, final double epsMinimum, final String savePath, final int recordInterval) {
+         final double epsDecay, final double epsMinimum, final String savePath, final int recordInterval,
+         final int terminateAfterSeconds) {
 
       return new AbstractRegisteredAlgorithm<SingleObjectiveExploreQLearning<S>>() {
          @Override
          public SingleObjectiveExploreQLearning<S> createAlgorithm() {
             return new SingleObjectiveExploreQLearning<>(explorationSteps, gamma, eps, withEpsDecay, epsDecay,
-                  epsMinimum, createProblem(), getEnvironment(), savePath, recordInterval);
+                  epsMinimum, createProblem(), getEnvironment(), savePath, recordInterval, terminateAfterSeconds);
          }
       };
    }
@@ -119,17 +125,19 @@ public class RLAlgorithmFactory<S extends Solution> extends AbstractAlgorithmFac
     *           .. storage path
     * @param recordInterval
     *           .. Recording interval / number of epochs
+    * @param terminateAfterSeconds
+    *           .. If > 0, the training run will terminate after the given amount of time
     * @return
     */
    public AbstractRegisteredAlgorithm<SingleObjectiveQLearning<S>> createSingleObjectiveQLearner(final double gamma,
          final double eps, final boolean withEpsDecay, final double epsDecay, final double epsMinimum,
-         final String savePath, final int recordInterval) {
+         final String savePath, final int recordInterval, final int terminateAfterSeconds) {
 
       return new AbstractRegisteredAlgorithm<SingleObjectiveQLearning<S>>() {
          @Override
          public SingleObjectiveQLearning<S> createAlgorithm() {
             return new SingleObjectiveQLearning<>(gamma, eps, withEpsDecay, epsDecay, epsMinimum, createProblem(),
-                  getEnvironment(), savePath, recordInterval);
+                  getEnvironment(), savePath, recordInterval, terminateAfterSeconds);
          }
       };
    }

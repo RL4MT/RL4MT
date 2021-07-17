@@ -23,6 +23,7 @@ public abstract class AbstractReinforcementNetwork<S extends Solution> {
 
    protected int nrOfEpochs = 0;
    protected final int stateSpace;
+   protected final int terminateAfterSeconds;
 
    int framecount;
    protected final ArrayList<Double> rewardEarned;
@@ -42,7 +43,8 @@ public abstract class AbstractReinforcementNetwork<S extends Solution> {
    protected final String scoreSavePath;
 
    public AbstractReinforcementNetwork(final double gamma, final double learningRate, final Problem problem,
-         final IEnvironment<S> environment, final String scoreSavePath, final boolean enableProgressServer) {
+         final IEnvironment<S> environment, final String scoreSavePath, final boolean enableProgressServer,
+         final int terminateAfterSeconds) {
 
       this.learningRate = learningRate;
       this.gamma = gamma;
@@ -63,6 +65,7 @@ public abstract class AbstractReinforcementNetwork<S extends Solution> {
 
       this.totalActions = this.encoder.getActionSpace(environment.getInitialSolution());
       this.stateSpace = this.encoder.getStateSpace(environment.getInitialSolution());
+      this.terminateAfterSeconds = terminateAfterSeconds;
 
       this.actionSpace = new int[totalActions];
       for(int i = 0; i < actionSpace.length; i++) {

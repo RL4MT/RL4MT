@@ -5,7 +5,6 @@ import at.ac.tuwien.big.moea.search.algorithm.reinforcement.networks.PolicyGradi
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 
 import org.moeaframework.algorithm.AbstractAlgorithm;
 import org.moeaframework.core.NondominatedPopulation;
@@ -20,14 +19,14 @@ public class PolicyGradient<S extends Solution> extends AbstractAlgorithm {
 
    public PolicyGradient(final double gamma, final double learningRate, final Problem problem,
          final IEnvironment<S> environment, final File network, final String modelSavePath, final String scoreSavePath,
-         final int epochsPerModelSave, final boolean enableProgressServer) {
+         final int epochsPerModelSave, final boolean enableProgressServer, final int terminateAfterSeconds) {
       super(problem);
 
       this.population = new NondominatedPopulation();
 
       try {
          policyGradientNetwork = new PolicyGradientNetwork<>(gamma, learningRate, problem, environment, network,
-               modelSavePath, scoreSavePath, epochsPerModelSave, enableProgressServer);
+               modelSavePath, scoreSavePath, epochsPerModelSave, enableProgressServer, terminateAfterSeconds);
       } catch(final IOException e) {
          e.printStackTrace();
       }
@@ -41,12 +40,16 @@ public class PolicyGradient<S extends Solution> extends AbstractAlgorithm {
 
    @Override
    protected void iterate() {
-      final List<S> epochSolutions = policyGradientNetwork.trainEpoch();
-      for(final S s : epochSolutions) {
-         evaluate(s);
-         population.add(s);
+      final boolean terminateDueTime = policyGradientNetwork.trainEpoch();
 
+      if(terminateDueTime) {
+         this.terminate();
       }
+      // for(final S s : epochSolutions) {
+      // evaluate(s);
+      // population.add(s);
+      //
+      // }
 
    }
 }

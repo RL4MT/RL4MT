@@ -20,8 +20,8 @@ public class SingleObjectiveQLearning<S extends Solution> extends AbstractValueB
 
    public SingleObjectiveQLearning(final double gamma, final double eps, final boolean withEpsDecay,
          final double epsDecay, final double epsMinimum, final Problem problem, final IEnvironment<S> environment,
-         final String savePath, final int recordInterval) {
-      super(problem, environment, savePath, recordInterval);
+         final String savePath, final int recordInterval, final int terminateAfterSeconds) {
+      super(problem, environment, savePath, recordInterval, terminateAfterSeconds);
 
       this.gamma = gamma;
       this.eps = eps;
@@ -84,6 +84,11 @@ public class SingleObjectiveQLearning<S extends Solution> extends AbstractValueB
             framesList.add((double) iterations);
             timePassedList.add((double) (System.currentTimeMillis() - startTime));
             meanRewardEarned.add(cumReward / epochSteps);
+
+            if(terminateAfterSeconds > 0 && terminateAfterSeconds < (System.currentTimeMillis() - startTime) / 1000.0) {
+               System.out.println("Terminated after " + terminateAfterSeconds + " seconds");
+               this.terminate();
+            }
 
             if(epochCount > 0 && epochCount % this.recordInterval == 0) {
                System.out.println("Saving rewards at epoch " + epochCount + " after "
