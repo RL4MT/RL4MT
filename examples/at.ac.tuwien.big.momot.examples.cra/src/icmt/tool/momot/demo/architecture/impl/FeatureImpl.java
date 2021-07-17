@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import icmt.tool.momot.demo.architecture.ArchitecturePackage;
 import icmt.tool.momot.demo.architecture.Feature;
+import icmt.tool.momot.demo.architecture.impl.NamedElementImpl;
 
 /**
  * <!-- begin-user-doc -->

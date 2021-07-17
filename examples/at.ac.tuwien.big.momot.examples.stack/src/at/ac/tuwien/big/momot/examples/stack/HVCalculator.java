@@ -2,6 +2,7 @@ package at.ac.tuwien.big.momot.examples.stack;
 
 import at.ac.tuwien.big.moea.search.fitness.dimension.IFitnessDimension;
 import at.ac.tuwien.big.momot.TransformationSearchOrchestration;
+import at.ac.tuwien.big.momot.examples.stack.stack.StackPackage;
 import at.ac.tuwien.big.momot.problem.solution.TransformationSolution;
 import at.ac.tuwien.big.momot.search.fitness.dimension.TransformationLengthDimension;
 
@@ -288,10 +289,14 @@ public class HVCalculator {
 
    public static void main(final String... args) throws IOException, ClassNotFoundException {
 
+      StackPackage.eINSTANCE.eClass();
+
       final StackOrchestration search = new StackOrchestration("model_twentyfive_stacks.xmi", 1);
 
       final NondominatedPopulation referenceSet = buildReferenceSet(CASE_PATH, "QLearning", "NSGAII",
             "QLearningExplore");
+      System.out.println("Calculated and saved summary statistics at " + CASE_PATH);
+
       System.out.println(referenceSet);
       StringBuilder sb = new StringBuilder();
 

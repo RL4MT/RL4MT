@@ -2,6 +2,8 @@
  */
 package icmt.tool.momot.demo.architecture;
 
+import icmt.tool.momot.demo.architecture.NamedElement;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Feature</b></em>'.

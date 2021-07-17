@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import icmt.tool.momot.demo.architecture.ArchitecturePackage;
 import icmt.tool.momot.demo.architecture.Feature;
+import icmt.tool.momot.demo.architecture.impl.NamedElementImpl;
 
 /**
  * <!-- begin-user-doc -->

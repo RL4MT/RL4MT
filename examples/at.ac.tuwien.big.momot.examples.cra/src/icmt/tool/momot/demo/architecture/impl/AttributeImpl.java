@@ -6,6 +6,7 @@ import org.eclipse.emf.ecore.EClass;
 
 import icmt.tool.momot.demo.architecture.ArchitecturePackage;
 import icmt.tool.momot.demo.architecture.Attribute;
+import icmt.tool.momot.demo.architecture.impl.FeatureImpl;
 
 /**
  * <!-- begin-user-doc -->

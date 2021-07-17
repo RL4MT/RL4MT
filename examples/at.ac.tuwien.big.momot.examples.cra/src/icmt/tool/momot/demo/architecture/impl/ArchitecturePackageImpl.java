@@ -17,6 +17,7 @@ import icmt.tool.momot.demo.architecture.ClassModel;
 import icmt.tool.momot.demo.architecture.Feature;
 import icmt.tool.momot.demo.architecture.Method;
 import icmt.tool.momot.demo.architecture.NamedElement;
+import icmt.tool.momot.demo.architecture.impl.ArchitecturePackageImpl;
 
 /**
  * <!-- begin-user-doc -->

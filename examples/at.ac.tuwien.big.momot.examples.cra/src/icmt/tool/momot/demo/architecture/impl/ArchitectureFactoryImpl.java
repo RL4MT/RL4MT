@@ -13,6 +13,11 @@ import icmt.tool.momot.demo.architecture.ArchitecturePackage;
 import icmt.tool.momot.demo.architecture.Attribute;
 import icmt.tool.momot.demo.architecture.ClassModel;
 import icmt.tool.momot.demo.architecture.Method;
+import icmt.tool.momot.demo.architecture.impl.ArchitectureFactoryImpl;
+import icmt.tool.momot.demo.architecture.impl.AttributeImpl;
+import icmt.tool.momot.demo.architecture.impl.ClassImpl;
+import icmt.tool.momot.demo.architecture.impl.ClassModelImpl;
+import icmt.tool.momot.demo.architecture.impl.MethodImpl;
 
 /**
  * <!-- begin-user-doc -->

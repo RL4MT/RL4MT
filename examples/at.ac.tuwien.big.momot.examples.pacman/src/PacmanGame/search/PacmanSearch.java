@@ -62,9 +62,9 @@ public class PacmanSearch {
          "transformation/move_up.henshin", "transformation/move_down.henshin", "transformation/move_left.henshin",
          "transformation/move_right.henshin" };
 
-   protected final int maxEvaluations = 3000000;
+   protected final int MAX_EVALUATIONS = 3000000;
 
-   protected final int nrRuns = 1;
+   protected final int NR_RUNS = 1;
 
    protected String baseName;
 
@@ -101,8 +101,8 @@ public class PacmanSearch {
 
    protected SearchExperiment<TransformationSolution> createExperiment(
          final TransformationSearchOrchestration orchestration) {
-      final SearchExperiment<TransformationSolution> experiment = new SearchExperiment<>(orchestration, maxEvaluations);
-      experiment.setNumberOfRuns(nrRuns);
+      final SearchExperiment<TransformationSolution> experiment = new SearchExperiment<>(orchestration, MAX_EVALUATIONS);
+      experiment.setNumberOfRuns(NR_RUNS);
       experiment.addProgressListener(_createListener_0());
       return experiment;
    }
@@ -210,8 +210,8 @@ public class PacmanSearch {
       System.out.println("Transformations: " + Arrays.toString(modules));
       System.out.println("Units:           " + orchestration.getModuleManager().getUnits());
       System.out.println("SolutionLength:  " + orchestration.getSolutionLength());
-      System.out.println("MaxEvaluations:  " + maxEvaluations);
-      System.out.println("AlgorithmRuns:   " + nrRuns);
+      System.out.println("MaxEvaluations:  " + MAX_EVALUATIONS);
+      System.out.println("AlgorithmRuns:   " + NR_RUNS);
       System.out.println("---------------------------");
    }
 }

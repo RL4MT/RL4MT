@@ -131,7 +131,7 @@ public class StackSearch {
          }
 
          if(!Files.exists(Paths.get(PRINT_DIRECTORY))) {
-            new File(PRINT_DIRECTORY).mkdir();
+            new File(PRINT_DIRECTORY).mkdirs();
          }
 
          experiment.addProgressListener(

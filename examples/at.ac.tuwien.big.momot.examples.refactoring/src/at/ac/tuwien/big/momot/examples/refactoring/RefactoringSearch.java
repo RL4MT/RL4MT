@@ -69,11 +69,11 @@ public class RefactoringSearch {
       search.performSearch(INITIAL_MODEL, SOLUTION_LENGTH);
    }
 
-   protected final int populationSize = 15;
+   protected final int POPULATION_SIZE = 15;
 
-   protected final int maxEvaluations = 100;
+   protected final int MAX_EVALUATIONS = 100;
 
-   protected final int nrRuns = 3;
+   protected final int NR_RUNS = 3;
 
    protected final String[] modules = new String[] { "transformations/Refactoring.henshin" };
 
@@ -141,8 +141,9 @@ public class RefactoringSearch {
 
    protected SearchExperiment<TransformationSolution> createExperiment(
          final TransformationSearchOrchestration orchestration) {
-      final SearchExperiment<TransformationSolution> experiment = new SearchExperiment<>(orchestration, maxEvaluations);
-      experiment.setNumberOfRuns(nrRuns);
+      final SearchExperiment<TransformationSolution> experiment = new SearchExperiment<>(orchestration,
+            MAX_EVALUATIONS);
+      experiment.setNumberOfRuns(NR_RUNS);
       experiment.addProgressListener(_createListener_0());
 
       if(PRINT_POPULATIONS) {
@@ -152,11 +153,11 @@ public class RefactoringSearch {
          }
 
          if(!Files.exists(Paths.get(PRINT_DIRECTORY))) {
-            new File(PRINT_DIRECTORY).mkdir();
+            new File(PRINT_DIRECTORY).mkdirs();
          }
 
          experiment.addProgressListener(
-               new CurrentNondominatedPopulationPrintListener(PRINT_DIRECTORY, algoNames, nrRuns, 100));
+               new CurrentNondominatedPopulationPrintListener(PRINT_DIRECTORY, algoNames, NR_RUNS, 100));
       }
 
       return experiment;
@@ -193,7 +194,7 @@ public class RefactoringSearch {
       orchestration.setFitnessFunction(createFitnessFunction(orchestration));
 
       final EvolutionaryAlgorithmFactory<TransformationSolution> moea = orchestration
-            .createEvolutionaryAlgorithmFactory(populationSize);
+            .createEvolutionaryAlgorithmFactory(POPULATION_SIZE);
 
       final IEnvironment<TransformationSolution> env = new Environment<>(
             new SolutionProvider<>(orchestration.getSearchHelper(), 1),
@@ -315,10 +316,10 @@ public class RefactoringSearch {
       System.out.println("Transformations: " + Arrays.toString(modules));
       System.out.println("Units:           " + orchestration.getModuleManager().getUnits());
       System.out.println("SolutionLength:  " + orchestration.getSolutionLength());
-      System.out.println("PopulationSize:  " + populationSize);
-      System.out.println("Iterations:      " + maxEvaluations / populationSize);
-      System.out.println("MaxEvaluations:  " + maxEvaluations);
-      System.out.println("AlgorithmRuns:   " + nrRuns);
+      System.out.println("PopulationSize:  " + POPULATION_SIZE);
+      System.out.println("Iterations:      " + MAX_EVALUATIONS / POPULATION_SIZE);
+      System.out.println("MaxEvaluations:  " + MAX_EVALUATIONS);
+      System.out.println("AlgorithmRuns:   " + NR_RUNS);
       System.out.println("---------------------------");
    }
 

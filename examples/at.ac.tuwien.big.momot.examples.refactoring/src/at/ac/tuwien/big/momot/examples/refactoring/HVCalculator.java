@@ -298,7 +298,8 @@ public class HVCalculator {
 
       final NondominatedPopulation referenceSet = buildReferenceSet(CASE_PATH, "QLearning", "NSGAII",
             "QLearningExplore");
-      System.out.println(referenceSet);
+      System.out.println("Calculated and saved summary statistics at " + CASE_PATH);
+
       StringBuilder sb = new StringBuilder();
 
       sb.append("Reference Set:\n\n");

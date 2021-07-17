@@ -84,11 +84,11 @@ public class ArchitectureSearch {
 
    protected final String[] modules = new String[] { "transformations/architecture.henshin" };
 
-   protected final int populationSize = 100;
+   protected final int POPULATION_SIZE = 100;
 
-   protected final int maxEvaluations = 5000;
+   protected final int MAX_EVALUATIONS = 5000;
 
-   protected final int nrRuns = 3;
+   protected final int NR_RUNS = 3;
 
    protected String baseName;
 
@@ -185,8 +185,9 @@ public class ArchitectureSearch {
 
    protected SearchExperiment<TransformationSolution> createExperiment(
          final TransformationSearchOrchestration orchestration) {
-      final SearchExperiment<TransformationSolution> experiment = new SearchExperiment<>(orchestration, maxEvaluations);
-      experiment.setNumberOfRuns(nrRuns);
+      final SearchExperiment<TransformationSolution> experiment = new SearchExperiment<>(orchestration,
+            MAX_EVALUATIONS);
+      experiment.setNumberOfRuns(NR_RUNS);
       experiment.addProgressListener(_createListener_0());
 
       if(PRINT_POPULATIONS) {
@@ -196,11 +197,11 @@ public class ArchitectureSearch {
          }
 
          if(!Files.exists(Paths.get(PRINT_DIRECTORY))) {
-            new File(PRINT_DIRECTORY).mkdir();
+            new File(PRINT_DIRECTORY).mkdirs();
          }
 
          experiment.addProgressListener(
-               new CurrentNondominatedPopulationPrintListener(PRINT_DIRECTORY, algorithmNames, nrRuns, 1000));
+               new CurrentNondominatedPopulationPrintListener(PRINT_DIRECTORY, algorithmNames, NR_RUNS, 1000));
 
       }
 
@@ -240,7 +241,7 @@ public class ArchitectureSearch {
       orchestration.setFitnessFunction(createFitnessFunction(orchestration));
 
       final EvolutionaryAlgorithmFactory<TransformationSolution> moea = orchestration
-            .createEvolutionaryAlgorithmFactory(populationSize);
+            .createEvolutionaryAlgorithmFactory(POPULATION_SIZE);
       final LocalSearchAlgorithmFactory<TransformationSolution> local = orchestration
             .createLocalSearchAlgorithmFactory();
 
@@ -365,10 +366,10 @@ public class ArchitectureSearch {
       System.out.println("Transformations: " + Arrays.toString(modules));
       System.out.println("Units:           " + orchestration.getModuleManager().getUnits());
       System.out.println("SolutionLength:  " + orchestration.getSolutionLength());
-      System.out.println("PopulationSize:  " + populationSize);
-      System.out.println("Iterations:      " + maxEvaluations / populationSize);
-      System.out.println("MaxEvaluations:  " + maxEvaluations);
-      System.out.println("AlgorithmRuns:   " + nrRuns);
+      System.out.println("PopulationSize:  " + POPULATION_SIZE);
+      System.out.println("Iterations:      " + MAX_EVALUATIONS / POPULATION_SIZE);
+      System.out.println("MaxEvaluations:  " + MAX_EVALUATIONS);
+      System.out.println("AlgorithmRuns:   " + NR_RUNS);
       System.out.println("---------------------------");
    }
 }

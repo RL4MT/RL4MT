@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import icmt.tool.momot.demo.architecture.ArchitecturePackage;
 import icmt.tool.momot.demo.architecture.Attribute;
 import icmt.tool.momot.demo.architecture.Method;
+import icmt.tool.momot.demo.architecture.impl.FeatureImpl;
 
 /**
  * <!-- begin-user-doc -->

@@ -4,6 +4,9 @@ package icmt.tool.momot.demo.architecture;
 
 import org.eclipse.emf.common.util.EList;
 
+import icmt.tool.momot.demo.architecture.Feature;
+import icmt.tool.momot.demo.architecture.NamedElement;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Class</b></em>'.

@@ -4,6 +4,13 @@ package icmt.tool.momot.demo.architecture;
 
 import org.eclipse.emf.ecore.EFactory;
 
+import icmt.tool.momot.demo.architecture.ArchitectureFactory;
+import icmt.tool.momot.demo.architecture.ArchitecturePackage;
+import icmt.tool.momot.demo.architecture.Attribute;
+import icmt.tool.momot.demo.architecture.Class;
+import icmt.tool.momot.demo.architecture.ClassModel;
+import icmt.tool.momot.demo.architecture.Method;
+
 /**
  * <!-- begin-user-doc -->
  * The <b>Factory</b> for the model.

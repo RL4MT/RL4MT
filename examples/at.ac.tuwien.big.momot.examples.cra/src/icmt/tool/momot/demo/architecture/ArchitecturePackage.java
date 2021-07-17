@@ -7,6 +7,9 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
+import icmt.tool.momot.demo.architecture.ArchitectureFactory;
+import icmt.tool.momot.demo.architecture.ArchitecturePackage;
+
 /**
  * <!-- begin-user-doc -->
  * The <b>Package</b> for the model.

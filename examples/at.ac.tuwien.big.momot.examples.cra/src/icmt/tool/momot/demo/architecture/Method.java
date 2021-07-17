@@ -4,6 +4,10 @@ package icmt.tool.momot.demo.architecture;
 
 import org.eclipse.emf.common.util.EList;
 
+import icmt.tool.momot.demo.architecture.Attribute;
+import icmt.tool.momot.demo.architecture.Feature;
+import icmt.tool.momot.demo.architecture.Method;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Method</b></em>'.
