@@ -13,9 +13,9 @@ the case studies presented in the paper are executed. Also, a short example for 
     * [Case Studies: How to run](#case-studies:-how-to-run)
         * [Example: Stack Load Balancing](#example:-stack-load-balancing)
     * [Reproduction of Results](#reproduction-of-results-presented-in-paper)
-        * [Table 1: Stack Load Balancing, CRA, OO-Refactoring](#table-1:-hypervolume-avg./std.-and-best-objective-value-(stack-load-balancing,-oo-refactoring,-class-responsibility-assignment-problem))
+        * [Table 1: Stack Load Balancing, CRA, OO-Refactoring](#table-1:-hypervolume-and-best-objective-value-(stack-load-balancing,-oo-refactoring,-class-responsibility-assignment-problem))
         * [Pacman: Training & Reward plot](#reward-plot-of-q_Basic-and-policy-gradient-in-the-pacman-game)
-    
+
 
 ## Where to get the project
 
@@ -125,7 +125,8 @@ In case of the Pacman model, the learning behaviour of the policy gradient was a
 Resources for this example are to be found in the project *at.ac.tuwien.big.momot.examples.stack*. Hereby, a *StackModel* (*stack.ecore* in *model* folder) consists of up to multiple *Stack*s with a load each. The goal in this case is to apply shift-operations in form of two rules, *shiftLeft* and *shiftRight*, where a certain amount is 
 transfered from the source stack to its left or right neighbour, i.e., the target stack. Note that the shift amount is chosen randomly by the Henshin Engine but set to a maximum of 5 units in one transformation step for this problem domain. (see *StackOrchestration.java* in *src\at\ac\tuwien\big\momot\examples\stack*).
 <figure>
-<img src="./stack.svg" alt="Stack Meta-Model">
+
+<img src="./examples/at.ac.tuwien.big.momot.examples.stack/model/stack.svg" alt="Stack Meta-Model">
 <figcaption><b>Meta-Model: Stack Load Balancing Case Study</b></figcaption>
 </figure>
 
