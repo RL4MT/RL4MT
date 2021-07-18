@@ -13,7 +13,7 @@ the case studies presented in the paper are executed. Also, a short example for 
     * [Case Studies: How to run](#case-studies-how-to-run)
         * [Example: Stack Load Balancing](#example-stack-load-balancing)
     * [Reproduction of Results](#reproduction-of-results-presented-in-paper)
-        * [Table 1: Stack Load Balancing, CRA, OO-Refactoring](#table-1-hypervolume-and-best-objective-value-(stack-load-balancing,-oo-refactoring,-class-responsibility-assignment-problem))
+        * [Table 1: Stack Load Balancing, CRA, OO-Refactoring](#table-1-hypervolume-and-best-objective-value-stack-load-balancing-oo-refactoring-class-responsibility-assignment-problem)
         * [Pacman: Training & Reward plot](#reward-plot-of-q_Basic-and-policy-gradient-in-the-pacman-game)
 
 
@@ -292,7 +292,6 @@ QLearningExplore
 0.8944271909999159 2.0
   ```
 </details>
-
 
 ## Reproduction of results presented in paper          
 
